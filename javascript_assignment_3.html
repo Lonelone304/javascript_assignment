@@ -4,46 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Assignment 3 - filter() Method</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h2 { color: #333; }
+        ul { background: #f0f0f0; padding: 15px; border-radius: 8px; }
+        li { margin: 5px 0; font-size: 18px; }
+    </style>
 </head>
 <body>
 
-    <h2>Filtered Names (Check the Console!)</h2>
-    <p>Open Developer Tools → Console to see the result</p>
+    <h2>Filtered Names (Letter: <span id="letter">B</span>)</h2>
+    <ul id="resultList"></ul>
 
     <script>
-        
         const people = [
-            "Alice Anderson",
-            "Aaron Adams",
-            "Bella Brown",
-            "Brian Black",
-            "Cathy Carter",
-            "Charles Cooper",
-            "Diana Davis",
-            "Daniel Drake",
-            "Ella Evans",
-            "Ethan Edwards",
-            "Fiona Fisher",
-            "Frank Foster",
-            "Grace Green",
-            "Gavin Gray",
-            "Hannah Harris",
-            "Henry Hill",
-            "Isabella Ingram",
-            "Ian Irving",
-            "Jack Johnson",
-            "Julia James"
+            "Alice Anderson", "Aaron Adams", "Bella Brown", "Brian Black",
+            "Cathy Carter", "Charles Cooper", "Diana Davis", "Daniel Drake",
+            "Ella Evans", "Ethan Edwards", "Fiona Fisher", "Frank Foster",
+            "Grace Green", "Gavin Gray", "Hannah Harris", "Henry Hill",
+            "Isabella Ingram", "Ian Irving", "Jack Johnson", "Julia James"
         ];
 
+        // Change this letter to whatever you want (A, B, C, J, E, etc.)
         const chosenLetter = "B";
 
-        
-        const result = people.filter(name => {
-            return name.charAt(0).toUpperCase() === chosenLetter.toUpperCase();
-        });
+        // Update the heading
+        document.getElementById("letter").textContent = chosenLetter;
 
-        console.log(`Names starting with "${chosenLetter}":`);
-        console.log(result);
+        // Filter names starting with the chosen letter
+        const result = people.filter(name => 
+            name.charAt(0).toUpperCase() === chosenLetter.toUpperCase()
+        );
+
+        // Display on the page
+        const list = document.getElementById("resultList");
+        if (result.length > 0) {
+            result.forEach(name => {
+                const li = document.createElement("li");
+                li.textContent = name;
+                list.appendChild(li);
+            });
+        } else {
+            list.innerHTML = "<li>No names found with letter " + chosenLetter + "</li>";
+        }
+
+        // Also keep console.log for extra proof
+        console.log(`Names starting with "${chosenLetter}":`, result);
     </script>
 
 </body>
