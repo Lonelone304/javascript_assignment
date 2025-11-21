@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Item</title>
+</head>
+<body>
+
+    <form action="https://athiphat-mybackend-01.southeastasia.cloudapp.azure.com/api/product" 
+          method="POST" 
+          enctype="multipart/form-data">
+
+        <fieldset>
+            <legend>General Info</legend>
+
+            <p>
+                <label for="itemName">Item Name</label><br>
+                <input type="text" id="itemName" name="itemName" size="50" maxlength="500" required>
+            </p>
+
+            <p>
+                <label for="itemDescription">Description</label><br>
+                <textarea id="itemDescription" name="itemDescription" rows="5" cols="50" required></textarea>
+            </p>
+
+            <p>
+                <label for="coverImage">Cover Image</label><br>
+                <input type="file" id="coverImage" name="coverImage" accept="image/*">
+            </p>
+
+            <p>
+                <label for="category">Category</label><br>
+                <select id="category" name="category" required>
+                    <option value="notSpecified">Not Specified</option>
+                    <option value="consumption">Consumption</option>
+                    <option value="household">Household</option>
+                    <option value="electronic">Electronic</option>
+                    <option value="gadget">Gadget</option>
+                </select>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Misc.</legend>
+
+            <p>
+                <label for="inventoryAmount">Inventory Amount</label><br>
+                <input type="number" id="inventoryAmount" name="inventoryAmount" min="0" value="1" required>
+            </p>
+
+            <p>
+                <label for="listPrice">List Price</label><br>
+                <input type="number" id="listPrice" name="listPrice" min="0" step="0.01" value="99.99" required>
+            </p>
+
+            <p>
+                Available Stores<br>
+                <label><input type="checkbox" name="availableStore[]" value="Bangkok"> Bangkok</label><br>
+                <label><input type="checkbox" name="availableStore[]" value="Pattaya"> Pattaya</label><br>
+                <label><input type="checkbox" name="availableStore[]" value="Phuket"> Phuket</label>
+            </p>
+
+            <p>
+                Active Status<br>
+                <label><input type="radio" name="status" value="Active" required> Active</label><br>
+                <label><input type="radio" name="status" value="Inactive"> Inactive</label>
+            </p>
+
+            <p>
+                <label for="staffEmail">Staff Email</label><br>
+                <input type="email" id="staffEmail" name="staffEmail" size="50" 
+                       value="u6715094@au.edu" required>
+                
+            </p>
+        </fieldset>
+
+        <br>
+        <button type="submit">Submit Form</button>
+    </form>
+
+</body>
+</html>
